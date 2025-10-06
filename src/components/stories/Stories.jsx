@@ -18,15 +18,15 @@ const Stories = () => {
   return (
     <div className="stories">
       <div className="story">
-        <img src={"/upload/" + currentUser.profilePic} alt="" />
+        <img src={currentUser.profilePic} alt="" />
         <span>{currentUser.name}</span>
         <button>+</button>
       </div>
       {error
         ? "Something went wrong"
         : isLoading
-        ? "loading"
-        : data.map((story) => (
+          ? "loading"
+          : data.map((story) => (
             <div className="story" key={story.id}>
               <img src={story.img} alt="" />
               <span>{story.name}</span>
