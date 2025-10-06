@@ -15,6 +15,7 @@ const Share = () => {
       const formData = new FormData();
       formData.append("file", file);
       const res = await makeRequest.post("/upload", formData);
+      console.log("Upload response:", res.data);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -41,7 +42,7 @@ const Share = () => {
     e.preventDefault();
     let imgUrl = "";
     if (file) imgUrl = await upload();
-    mutation.mutate({ desc, img: imgUrl });
+    mutation.mutate({ desc, img: imgUrl.url });
     setDesc("");
     setFile(null);
   };
@@ -51,7 +52,7 @@ const Share = () => {
       <div className="container">
         <div className="top">
           <div className="left">
-            <img src={"" + currentUser.profilePic} alt="" />
+            <img src={currentUser.profilePic} alt="" />
             <input
               type="text"
               placeholder={`What's on your mind ${currentUser.name}?`}
