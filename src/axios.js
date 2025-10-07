@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const makeRequest = axios.create({
-  baseURL: "http://52.64.14.178:8800/api/",
+  baseURL: `${process.env.REACT_APP_BACKEND_URL}/api/`,
   withCredentials: true,
 });
 
