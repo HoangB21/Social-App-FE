@@ -26,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
 
   // ✅ Hàm login
   const login = async (inputs) => {
-    const res = await axios.post("http://52.64.14.178:8800/api/auth/login", inputs);
+    const res = await axios.post("http://localhost:8800/api/auth/login", inputs);
     setCurrentUser(res.data); // res.data nên chứa cả token
   };
 
