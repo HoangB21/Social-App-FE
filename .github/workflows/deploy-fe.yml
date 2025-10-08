@@ -18,12 +18,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Create .env file
+        run: echo "REACT_APP_BACKEND_URL=${{ secrets.BACKEND_URL }}" >> .env
+      
       - name: Build
         run: npm run build
 
       - name: Deploy to S3
         run: |
-          aws s3 sync build/ s3://social-app-fe --delete
+          aws s3 sync build/ s3://${{ secrets.BUCKET_NAME }} --delete
         # nếu bạn dùng bucket private + OAC, có thể cần thêm tham số --acl bucket-owner-full-control hoặc khác
 
       - name: Invalidate CloudFront cache
