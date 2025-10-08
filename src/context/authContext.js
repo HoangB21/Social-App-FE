@@ -1,4 +1,4 @@
-import axios from "axios";
+import { makeRequest } from "./../axios";
 import { createContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
@@ -26,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
 
   // ✅ Hàm login
   const login = async (inputs) => {
-    const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, inputs);
+    const res = await makeRequest.post("auth/login", inputs);
 
     setCurrentUser(res.data); // res.data nên chứa cả token
   };
