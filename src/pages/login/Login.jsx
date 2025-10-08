@@ -31,7 +31,7 @@ const Login = () => {
     <div className="login">
       <div className="card">
         <div className="left">
-          <h1>Hello World.</h1>
+          <h1>Hello Hoang!</h1>
           <p>
             This is a social media app. You can share posts, like and comment on
             others' posts, and follow your friends.
