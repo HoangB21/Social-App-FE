@@ -7,14 +7,23 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import { Link } from "react-router-dom";
+import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "../../context/authContext";
 
 const Navbar = () => {
   const { toggle, darkMode } = useContext(DarkModeContext);
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear stored user and update context
+    localStorage.removeItem("user");
+    setCurrentUser(null);
+    navigate("/login");
+  };
 
   return (
     <div className="navbar">
@@ -39,12 +48,13 @@ const Navbar = () => {
         <EmailOutlinedIcon />
         <NotificationsOutlinedIcon />
         <div className="user">
-          <img
-            src={currentUser.profilePic}
-            alt=""
-          />
-          <span>{currentUser.name}</span>
+          <img src={currentUser?.profilePic} alt="" />
+          <span>{currentUser?.name}</span>
         </div>
+        <button className="logoutBtn" onClick={handleLogout} title="Logout">
+          <ExitToAppOutlinedIcon fontSize="small" />
+          <span className="btnText">Logout</span>
+        </button>
       </div>
     </div>
   );

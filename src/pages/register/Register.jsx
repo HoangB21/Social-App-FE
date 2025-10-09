@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./register.scss";
-import axios from "axios";
+import { makeRequest } from "../../axios";
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -20,7 +20,8 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/register`, inputs);
+      const res = await makeRequest.post(`auth/register`, inputs);
+      if (res.status === 200) alert("Registration successful! You can now log in.");
     } catch (err) {
       setErr(err.response.data);
     }
