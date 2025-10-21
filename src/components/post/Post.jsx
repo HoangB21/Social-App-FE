@@ -82,7 +82,9 @@ const Post = ({ post }) => {
         </div>
         <div className="content">
           <p>{post.desc}</p>
-          <img src={post.img} alt="" />
+          <div className="post-image">
+            <img src={post.img} alt="" />
+          </div>
         </div>
         <div className="info">
           <div className="item">
