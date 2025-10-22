@@ -1,7 +1,7 @@
 import "./navbar.scss";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
+// import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+// import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -14,7 +14,7 @@ import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "../../context/authContext";
 
 const Navbar = () => {
-  const { toggle, darkMode } = useContext(DarkModeContext);
+  // const { toggle, darkMode } = useContext(DarkModeContext);
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -32,11 +32,11 @@ const Navbar = () => {
           <span>Social App</span>
         </Link>
         <HomeOutlinedIcon />
-        {darkMode ? (
+        {/* {darkMode ? (
           <WbSunnyOutlinedIcon onClick={toggle} />
         ) : (
           <DarkModeOutlinedIcon onClick={toggle} />
-        )}
+        )} */}
         <GridViewOutlinedIcon />
         <div className="search">
           <SearchOutlinedIcon />
